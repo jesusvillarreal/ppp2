@@ -1,0 +1,103 @@
+import React, { Suspense, lazy } from "react";
+import { Router, Switch, Route } from "react-router-dom";
+import { history } from "./history";
+import { connect } from "react-redux";
+import Spinner from "./components/@vuexy/spinner/Loading-spinner";
+import { ContextLayout } from "./utility/context/Layout";
+
+// Route-based code splitting
+const Home = lazy(() => import("./views/pages/Home"));
+
+const Mensajes = lazy(() => import("./views/pages/Mensajes"));
+
+// const Usuarios = lazy(() => import("./views/pages/Usuarios"));
+const Reportes = lazy(() => import("./views/pages/Reportes"));
+const Masivo = lazy(() => import("./views/pages/Masivo"));
+const Configuracion = lazy(() => import("./views/pages/Configuracion"));
+
+const userList = lazy(() => import("./views/apps/user/list/List"));
+const userEdit = lazy(() => import("./views/apps/user/edit/Edit"));
+const userView = lazy(() => import("./views/apps/user/view/View"));
+
+const login = lazy(() => import("./views/pages/authentication/login/Login"));
+
+const Register = lazy(() =>
+  import("./views/pages/authentication/register/Register")
+);
+const ForgotPassword = lazy(() =>
+  import("./views/pages/authentication/forgot/forgot")
+);
+
+// Set Layout and Component Using App Route
+const RouteConfig = ({
+  component: Component,
+  fullLayout,
+  permission,
+  user,
+  ...rest
+}) => (
+  <Route
+    {...rest}
+    render={(props) => {
+      return (
+        <ContextLayout.Consumer>
+          {(context) => {
+            let LayoutTag =
+              fullLayout === true
+                ? context.fullLayout
+                : context.state.activeLayout === "horizontal"
+                ? context.horizontalLayout
+                : context.VerticalLayout;
+            return (
+              <LayoutTag {...props} permission={props.user}>
+                <Suspense fallback={<Spinner />}>
+                  <Component {...props} />
+                </Suspense>
+              </LayoutTag>
+            );
+          }}
+        </ContextLayout.Consumer>
+      );
+    }}
+  />
+);
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.login.userRole,
+  };
+};
+
+const AppRoute = connect(mapStateToProps)(RouteConfig);
+
+class AppRouter extends React.Component {
+  render() {
+    return (
+      // Set the directory path if you are deploying in sub-folder
+      <Router history={history}>
+        <Switch>
+          <AppRoute exact path="/" component={Home} />
+          <AppRoute path="/mensajes" component={Mensajes} />
+          {/* <AppRoute path="/usuarios" component={Usuarios} /> */}
+          <AppRoute path="/reportes" component={Reportes} />
+          <AppRoute path="/masivo" component={Masivo} />
+          <AppRoute path="/configuracion" component={Configuracion} />
+
+          <AppRoute path="/pages/login" component={login} fullLayout />
+          <AppRoute path="/pages/register" component={Register} fullLayout />
+
+          <AppRoute path="/usuarios" component={userList} />
+          <AppRoute path="/usuarios/edit" component={userEdit} />
+          <AppRoute path="/usuarios/view" component={userView} />
+
+          <AppRoute
+            path="/pages/forgot-password"
+            component={ForgotPassword}
+            fullLayout
+          />
+        </Switch>
+      </Router>
+    );
+  }
+}
+
+export default AppRouter;
