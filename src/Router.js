@@ -8,11 +8,14 @@ import { ContextLayout } from "./utility/context/Layout";
 // Route-based code splitting
 const Home = lazy(() => import("./views/pages/Home"));
 
-const Mensajes = lazy(() => import("./views/pages/Mensajes"));
+const Mensajes = lazy(() => import("./views/apps/Mensajes/Mensajes"));
+const Survey = lazy(() => import("./views/pages/Survey"));
+const Automation = lazy(() => import("./views/pages/Automation"));
+const Tabla = lazy(() => import("./views/tables/data-tables/DataTables"));
 
 // const Usuarios = lazy(() => import("./views/pages/Usuarios"));
-const Reportes = lazy(() => import("./views/pages/Reportes"));
-const Masivo = lazy(() => import("./views/pages/Masivo"));
+const Reportes = lazy(() => import("./views/apps/Masivos/Reportes"));
+const Masivo = lazy(() => import("./views/apps/Masivos/Masivo"));
 const Configuracion = lazy(() => import("./views/pages/Configuracion"));
 
 const userList = lazy(() => import("./views/apps/user/list/List"));
@@ -77,6 +80,10 @@ class AppRouter extends React.Component {
         <Switch>
           <AppRoute exact path="/" component={Home} />
           <AppRoute path="/mensajes" component={Mensajes} />
+          <AppRoute path="/survey" component={Survey} />
+          <AppRoute path="/automation" component={Automation} />
+          <AppRoute path="/tabla" component={Tabla} />
+
           {/* <AppRoute path="/usuarios" component={Usuarios} /> */}
           <AppRoute path="/reportes" component={Reportes} />
           <AppRoute path="/masivo" component={Masivo} />

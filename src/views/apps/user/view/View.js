@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   Card,
   CardHeader,
@@ -8,13 +8,13 @@ import {
   Row,
   Col,
   Button,
-  Table
-} from "reactstrap"
-import { Edit, Trash, Lock, Check } from "react-feather"
-import { Link } from "react-router-dom"
-import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy"
-import userImg from "../../../../assets/img/portrait/small/avatar-s-18.jpg"
-import "../../../../assets/scss/pages/users.scss"
+  Table,
+} from "reactstrap";
+import { Edit, Trash, Lock, Check } from "react-feather";
+import { Link } from "react-router-dom";
+import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy";
+import userImg from "../../../../assets/img/portrait/small/avatar-s-18.jpg";
+import "../../../../assets/scss/pages/users.scss";
 class UserView extends React.Component {
   render() {
     return (
@@ -371,7 +371,7 @@ class UserView extends React.Component {
           </Col>
         </Row>
       </React.Fragment>
-    )
+    );
   }
 }
-export default UserView
+export default UserView;

@@ -13,7 +13,6 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/",
   },
-
   {
     id: "Mensajes",
     title: "Mensajes",
@@ -21,6 +20,22 @@ const navigationConfig = [
     icon: <Icon.MessageCircle size={20} />,
     permissions: ["admin", "editor"],
     navLink: "/mensajes",
+  },
+  {
+    id: "Survey",
+    title: "Survey",
+    type: "item",
+    icon: <Icon.FileText size={20} />,
+    permissions: ["admin", "editor"],
+    navLink: "/survey",
+  },
+  {
+    id: "Automation",
+    title: "Automation",
+    type: "item",
+    icon: <Icon.Coffee size={20} />,
+    permissions: ["admin", "editor"],
+    navLink: "/automation",
   },
   {
     id: "Masivo",
@@ -31,24 +46,8 @@ const navigationConfig = [
     navLink: "/masivo",
   },
   {
-    id: "Reportes",
-    title: "Reportes",
-    type: "item",
-    icon: <Icon.Download size={20} />,
-    permissions: ["admin", "editor"],
-    navLink: "/reportes",
-  },
-  {
     type: "groupHeader",
     groupTitle: "Configuración",
-  },
-  {
-    id: "Configuracion",
-    title: "Configuración",
-    type: "item",
-    icon: <Icon.Settings size={20} />,
-    permissions: ["admin", "editor"],
-    navLink: "/configuracion",
   },
   {
     id: "Usuarios",
@@ -57,6 +56,22 @@ const navigationConfig = [
     icon: <Icon.Users size={20} />,
     permissions: ["admin", "editor"],
     navLink: "/usuarios",
+  },
+  {
+    id: "Reportes",
+    title: "Reportes",
+    type: "item",
+    icon: <Icon.Download size={20} />,
+    permissions: ["admin", "editor"],
+    navLink: "/reportes",
+  },
+  {
+    id: "Configuracion",
+    title: "Configuración",
+    type: "item",
+    icon: <Icon.Settings size={20} />,
+    permissions: ["admin", "editor"],
+    navLink: "/configuracion",
   },
 ];
 
