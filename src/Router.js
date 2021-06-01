@@ -14,7 +14,7 @@ const Automation = lazy(() => import("./views/pages/Automation"));
 const Tabla = lazy(() => import("./views/tables/data-tables/DataTables"));
 
 // const Usuarios = lazy(() => import("./views/pages/Usuarios"));
-const Reportes = lazy(() => import("./views/apps/Masivos/Reportes"));
+const Contactos = lazy(() => import("./views/apps/Masivos/Contactos"));
 const Masivo = lazy(() => import("./views/apps/Masivos/Masivo"));
 const Configuracion = lazy(() => import("./views/pages/Configuracion"));
 
@@ -85,16 +85,16 @@ class AppRouter extends React.Component {
           <AppRoute path="/tabla" component={Tabla} />
 
           {/* <AppRoute path="/usuarios" component={Usuarios} /> */}
-          <AppRoute path="/reportes" component={Reportes} />
+          <AppRoute path="/contactos" component={Contactos} />
           <AppRoute path="/masivo" component={Masivo} />
           <AppRoute path="/configuracion" component={Configuracion} />
 
           <AppRoute path="/pages/login" component={login} fullLayout />
           <AppRoute path="/pages/register" component={Register} fullLayout />
 
-          <AppRoute path="/usuarios" component={userList} />
-          <AppRoute path="/usuarios/edit" component={userEdit} />
-          <AppRoute path="/usuarios/view" component={userView} />
+          <AppRoute path="/equipo" component={userList} />
+          <AppRoute path="/equipo/edit" component={userEdit} />
+          <AppRoute path="/equipo/view" component={userView} />
 
           <AppRoute
             path="/pages/forgot-password"
